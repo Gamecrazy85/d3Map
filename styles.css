@@ -1,0 +1,29 @@
+#viz {
+	margin: 2em;	
+}
+
+path {
+	fill:#FFFFFF;
+	stroke:#000000;
+	stroke-miterlimit:10;
+	font-size: 1em;
+	color: #000000;
+	text-align: center;
+}
+
+.style {
+	margin: 2em;	
+	display: block;
+}
+
+.bars {
+  fill: steelblue;
+}
+
+.bars:hover {
+  fill: darkred;	
+}
+
+svg g text {
+	font-size: 1.25em;	
+}

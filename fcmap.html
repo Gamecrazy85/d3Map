@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="d3.js"></script>
+		<script type="text/javascript" src="jinqjs.js"></script>
+		<link type="text/css" rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<div id="filters">
+			<select id="view">
+  				<option value="1" selected>Please select a view</option>
+				<option value="2">Location Map</option> 
+  				<option value="3">Bar Chart</option>
+			</select>
+			<select id="measure">
+  				<option value="1" selected>Please select a measure</option>
+				<option value="2">Units in inventory</option> 
+  				<option value="3">Units picked</option>
+			</select>
+		</div>
+		<svg id="viz" version="1.1" x="0px" y="0px" viewbox="0 0 1866.9 401.9">
+		</svg>
+		<script type="text/javascript" src="script.js"></script>
+	</body>
+</html>
