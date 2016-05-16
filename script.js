@@ -123,6 +123,16 @@ function reset_svg() {
 	 d3.selectAll("svg *").remove();
 }
 
+function toggle(d3_sel) {
+	var el = d3.select(d3_sel);
+	
+	if ( el.hasClass('hidden')) {
+		el.attr('class', 'show');
+	} else {
+		el.attr('class', 'hidden');
+	}
+}
+
 function show_measures() {
 	d3.select('svg, #measure').style('display', 'unset');	
 }
@@ -139,15 +149,16 @@ d3.select('svg, #measure').style('display', 'none');
 d3.select('#view').on('change', function() {
 	if (this.options[this.selectedIndex].value === '1') {
 		reset_svg();
-		hide_measures();
+		toggle('#measure');
+		toggle('svg');
 	} else if (this.options[this.selectedIndex].value === '2') {
 		reset_svg();	
 		show_measures();
 		map();
 	} else if (this.options[this.selectedIndex].value === '3') {
 		reset_svg();
-		show_measures();
-		bars();
+		toggle('#measure');
+		toggle('svg');
 	}
 });
 
