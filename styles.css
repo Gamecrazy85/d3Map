@@ -1,9 +1,8 @@
 .hidden {
 	display:none;	
 }
-
-#viz {
-	margin: 2em;	
+.show {
+	display:unset;	
 }
 
 path {
@@ -30,4 +29,26 @@ path {
 
 svg g text {
 	font-size: 1.25em;	
+}
+select {
+	margin-bottom: 50px;	
+}
+#filters {
+	display: block;
+	padding: 20px;
+	margin: 20px;
+}
+.svg-container {
+	display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 25%; /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
+}
+#viz {
+    display: inline-block;
+    position: absolute;
+    top: 100px;
+    left: 0;
 }

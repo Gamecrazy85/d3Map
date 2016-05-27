@@ -13,14 +13,16 @@
 				<option value="2">Location Map</option> 
   				<option value="3">Bar Chart</option>
 			</select>
-			<select id="measure">
+			<select id="measure" class="hidden">
   				<option value="1" selected>Please select a measure</option>
 				<option value="2">Units in inventory</option> 
   				<option value="3">Units picked</option>
 			</select>
 		</div>
-		<svg id="viz" version="1.1" x="0px" y="0px" viewbox="0 0 1866.9 401.9">
-		</svg>
+		<div class=".svg-container">
+			<svg id="viz" x="0" y="0" viewbox="0 0 1866 400">
+			</svg>
+		</div>
 		<script type="text/javascript" src="script.js"></script>
 	</body>
 </html>

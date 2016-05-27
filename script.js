@@ -24,11 +24,11 @@ function count_qty(rawData) {
 		.groupBy('qty')
 		.count('id')
 		.select();
-	return 	theData;
+	return theData;
 }
-function high(theData){
+function high(rawData) {
 	var temp_max = new jinqJs()
-		.from(theData)
+		.from(rawData)
 		.max('qty')
 		.select();
 	return temp_max;
@@ -49,6 +49,7 @@ function attach(theData) {
 		);
 	});
 }
+
 function map(){ 
 	d3.tsv('path.tsv', function(error, path_data) {
 		d3.select('#viz')
@@ -69,7 +70,7 @@ function map(){
 				attach(aggrigation);
 			});	
 	}
-	
+		
 	d3.select('#measure').on('change', function () {
 		var choice = this.options[this.selectedIndex].value;
 		if (choice === '1') {
@@ -91,8 +92,8 @@ function bars() {
 		});
 		
 		var theData = count_qty(rawData);
-		var width = 1869.9;
-		var height = 401.9;
+		var width = window.innerWidth;
+		var height = window.innerHeight;
 		var barWidth = height / theData.length;
 		
 		var y = d3.scale.linear()
@@ -118,52 +119,36 @@ function bars() {
     		.text(function(d) { return d.id; });
 	});		
 }
-
-function reset_svg() {
-	 d3.selectAll("svg *").remove();
+//Clears all child elements of the given element
+function delete_children(element) {
+	 d3.selectAll(element +" *").remove();
 }
 
-function toggle(d3_sel) {
-	var el = d3.select(d3_sel);
+function toggle(element) {
+	var el = d3.select(element);
 	
-	if ( el.hasClass('hidden')) {
+	if ( el.classed('hidden')) {
 		el.attr('class', 'show');
 	} else {
 		el.attr('class', 'hidden');
 	}
 }
 
-function show_measures() {
-	d3.select('svg, #measure').style('display', 'unset');	
-}
-
-function hide_measures() {
-	d3.select('svg, #measure').style('display', 'none');
-}
-
-
-//hide elements till ready for then
-d3.select('svg, #measure').style('display', 'none');
-
 //Selection of view type triggers functionality
 d3.select('#view').on('change', function() {
 	if (this.options[this.selectedIndex].value === '1') {
-		reset_svg();
+		delete_children('svg');	
 		toggle('#measure');
 		toggle('svg');
 	} else if (this.options[this.selectedIndex].value === '2') {
-		reset_svg();	
-		show_measures();
+		delete_children('svg');	
+		toggle('#measure');
 		map();
 	} else if (this.options[this.selectedIndex].value === '3') {
-		reset_svg();
+		delete_children('svg');	
 		toggle('#measure');
-		toggle('svg');
+		bars();
 	}
 });
-
-
-
-
 
 
